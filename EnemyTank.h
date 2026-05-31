@@ -1,19 +1,18 @@
-#ifndef ENEMY_H
-#define ENEMY_H
+#ifndef ENEMYTANK_H
+#define ENEMYTANK_H
 
 #include "IUpdatable.h"
 #include "IRenderable.h"
-#include <string>
 
-class Enemy : public IUpdatable, public IRenderable {
+class EnemyTank : public IUpdatable, public IRenderable {
 private:
     float x, y;
     float health;
     float speed;
-    float targetX, targetY;  // куда двигаться
+    float targetX, targetY;
     
 public:
-    Enemy(float startX, float startY, float targetX, float targetY);
+    EnemyTank(float startX, float startY, float targetX, float targetY);
     
     void update(float deltaTime) override;
     void render() const override;

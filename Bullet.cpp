@@ -2,7 +2,7 @@
 #include <iostream>
 
 Bullet::Bullet(float startX, float startY, float dirX, float dirY)
-    : x(startX), y(startY), dx(dirX), dy(dirY), lifeTime(2.0f), isActive(true) {}
+    : x(startX), y(startY), dx(dirX), dy(dirY), lifeTime(3.0f), isActive(true) {}  // было 2.0f
 
 void Bullet::update(float deltaTime) {
     if (!isActive) return;
@@ -13,19 +13,20 @@ void Bullet::update(float deltaTime) {
         return;
     }
     
-    // Движение пули
-    float speed = 100.0f;
+    float speed = 120.0f;
     x += dx * speed * deltaTime;
     y += dy * speed * deltaTime;
 }
 
 void Bullet::render() const {
     if (isActive) {
-        std::cout << "•";
+        std::cout << "● ";
+    } else {
+        std::cout << "  ";
     }
 }
 
 std::string Bullet::getRenderInfo() const {
     if (!isActive) return "Bullet [inactive]";
-    return "Bullet [x=" + std::to_string(x) + ", y=" + std::to_string(y) + ", life=" + std::to_string(lifeTime) + "]";
+    return "Bullet [x=" + std::to_string(x) + ", y=" + std::to_string(y) + "]";
 }

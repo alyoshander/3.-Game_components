@@ -1,19 +1,19 @@
-#ifndef ENEMY_H
-#define ENEMY_H
+#ifndef ENEMYFAST_H
+#define ENEMYFAST_H
 
 #include "IUpdatable.h"
 #include "IRenderable.h"
-#include <string>
+#include "Player.h"
 
-class Enemy : public IUpdatable, public IRenderable {
+class EnemyFast : public IUpdatable, public IRenderable {
 private:
     float x, y;
     float health;
     float speed;
-    float targetX, targetY;  // куда двигаться
+    float targetX, targetY;
     
 public:
-    Enemy(float startX, float startY, float targetX, float targetY);
+    EnemyFast(float startX, float startY, float targetX, float targetY);
     
     void update(float deltaTime) override;
     void render() const override;
@@ -23,6 +23,7 @@ public:
     float getY() const { return y; }
     bool isAlive() const { return health > 0; }
     void takeDamage(float damage);
+    void onCollisionWithPlayer(Player* player);
     
     void knockback(float fromX, float fromY, float force = 2.0f);
 };
